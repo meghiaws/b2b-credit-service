@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "b2b-credit-service"
+version = "0.1.0"
+description = ""
+authors = ["Mahdi Ghiasi <mahdiw.ghiasi@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "b2b_credit_service"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2.2"
+psycopg = "^3.1.9"
+djangorestframework = "^3.14.0"
+django-extensions = "^3.2.3"
+drf-spectacular = "^0.26.2"
+django-debug-toolbar = "^4.1.0"
+django-environ = "^0.10.0"
+gunicorn = "^20.1.0"
+
+
+[tool.poetry.group.dev.dependencies]
+ptpython = "^3.0.23"
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
