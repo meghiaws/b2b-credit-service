@@ -5,7 +5,7 @@ description = ""
 authors = ["Mahdi Ghiasi <mahdiw.ghiasi@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "b2b_credit_service"}]
+packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

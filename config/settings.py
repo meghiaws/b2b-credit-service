@@ -8,15 +8,17 @@ env.read_env(os.path.join(BASE_DIR, ".env"))
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "bx!1h^dv*s5t3py4qjf%lbl_^te-tbf@$_e(bo-%+ag6^ax*xx"
+SECRET_KEY = "bx!1h^dv*s5t3py4qjf%lbl_^te-tbf@$_e(bo-%+ag6^ax*mx"
 
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
 LOCAL_APPS = [
-    "b2b_credit_service.credits.apps.CreditsConfig",
-    "b2b_credit_service.api.apps.ApiConfig",
+    "app.api.apps.ApiConfig",
+    "app.authentication.apps.AuthenticationConfig",
+    "app.credits.apps.CreditsConfig",
+    "app.core.apps.CoreConfig",
 ]
 
 THIRD_PARTY_APPS = [
@@ -71,16 +73,16 @@ TEMPLATES = [
 WSGI_APPLICATION = "config.wsgi.application"
 
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": env.str("DB_NAME", "credit_service"),
-#         "USER": env.str("DB_USER", "postgres"),
-#         "PASSWORD": env.str("DB_PASSWORD", "password"),
-#         "HOST": env.str("DB_HOST", "localhost"),
-#         "PORT": env.str("DB_PORT", 5432),
-#     }
-# }
+    # DATABASES = {
+    #     "default": {
+    #         "ENGINE": "django.db.backends.postgresql",
+    #         "NAME": env.str("DB_NAME", "credit_service"),
+    #         "USER": env.str("DB_USER", "postgres"),
+    #         "PASSWORD": env.str("DB_PASSWORD", "password"),
+    #         "HOST": env.str("DB_HOST", "localhost"),
+    #         "PORT": env.str("DB_PORT", 5432),
+    #     }
+    # }
 
 DATABASES = {
     "default": {
@@ -107,6 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+AUTH_USER_MODEL = "core.BaseUser"
 
 LANGUAGE_CODE = "en-us"
 
