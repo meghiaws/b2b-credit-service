@@ -70,6 +70,17 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "B2B Credits Service API",
+    "DESCRIPTION": "A b2b service that provide buying credits",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+}
+
 WSGI_APPLICATION = "config.wsgi.application"
 
 
