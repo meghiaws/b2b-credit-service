@@ -1,8 +1,11 @@
 from decimal import Decimal
-from django.db.models import QuerySet, F
 from django.db import transaction
+from django.db.models import QuerySet, F
+from django.contrib.auth import get_user_model
 
 from app.credits.models import IncreaseBalanceTransaction, Organization
+
+User = get_user_model()
 
 
 class OrganizationService:
@@ -20,8 +23,13 @@ class OrganizationService:
 
     @staticmethod
     def organization_increase_balance(
-        *, organization_id: int, balance: Decimal
+        *, user: User,balance: Decimal
     ) -> None:
+        organization_id = (
+            Organization.objects.filter(user_id=user.id)
+            .values_list("id", flat=True)
+            .get()
+        )
         with transaction.atomic():
             # create increase balance record for keep track of increased balances
             IncreaseBalanceTransaction.objects.create(

@@ -16,7 +16,7 @@ organization_patterns = [
         name="organization-detail",
     ),
     path(
-        "<int:organization_id>/increase-balance/",
+        "increase-balance/",
         OrganizationIncreaseBalanceApi.as_view(),
         name="organization-increase-balance",
     ),

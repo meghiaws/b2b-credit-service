@@ -1,10 +1,9 @@
 from rest_framework.views import APIView
-from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
-from rest_framework import serializers, status
+from rest_framework import status
 from drf_spectacular.utils import extend_schema
+from app.api.mixins import OrganizerAuthMixin
 
-from app.credits.models import Organization
 from app.credits.services.organization import OrganizationService
 from app.credits.serializers.organization import (
     OrganizationIncreaseBalanceInputSerializer,
@@ -46,14 +45,14 @@ class OrganizationDetailApi(APIView):
 
 
 # [POST] api/organizations/{organization_id}/increase-balance/
-class OrganizationIncreaseBalanceApi(APIView):
+class OrganizationIncreaseBalanceApi(OrganizerAuthMixin, APIView):
     @extend_schema(responses=OrganizationIncreaseBalanceInputSerializer)
-    def post(self, request, organization_id):
+    def post(self, request):
         serializer = OrganizationIncreaseBalanceInputSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         OrganizationService.organization_increase_balance(
-            organization_id=organization_id, **serializer.validated_data
+            user=request.user, **serializer.validated_data
         )
 
         return Response(status=status.HTTP_200_OK)
