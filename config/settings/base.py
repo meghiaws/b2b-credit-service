@@ -1,19 +1,16 @@
 from datetime import timedelta
 import os
-from pathlib import Path
 
 from config.env import BASE_DIR, env
 
-
 env.read_env(os.path.join(BASE_DIR, ".env"))
 
-BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "bx!1h^dv*s5t3py4qjf%lbl_^te-tbf@$_e(bo-%+ag6^ax*mx"
+SECRET_KEY = env.str("SECRET_KEY")
 
-DEBUG = True
+DEBUG = env.bool("DEBUG", True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", [])
 
 LOCAL_APPS = [
     "app.api.apps.ApiConfig",
@@ -26,7 +23,6 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "drf_spectacular",
     "django_extensions",
-    "debug_toolbar",
 ]
 
 INSTALLED_APPS = [
@@ -35,14 +31,16 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     *THIRD_PARTY_APPS,
     *LOCAL_APPS,
 ]
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -51,7 +49,6 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK": lambda request: True}
 
 ROOT_URLCONF = "config.urls"
 
@@ -90,25 +87,14 @@ SPECTACULAR_SETTINGS = {
 WSGI_APPLICATION = "config.wsgi.application"
 
 
-    # DATABASES = {
-    #     "default": {
-    #         "ENGINE": "django.db.backends.postgresql",
-    #         "NAME": env.str("DB_NAME", "credit_service"),
-    #         "USER": env.str("DB_USER", "postgres"),
-    #         "PASSWORD": env.str("DB_PASSWORD", "password"),
-    #         "HOST": env.str("DB_HOST", "localhost"),
-    #         "PORT": env.str("DB_PORT", 5432),
-    #     }
-    # }
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "credit_service",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "localhost",
-        "PORT": 5432,
+        "NAME": env.str("DB_NAME"),
+        "USER": env.str("DB_USER"),
+        "PASSWORD": env.str("DB_PASSWORD"),
+        "HOST": env.str("DB_HOST"),
+        "PORT": env.str("DB_PORT"),
     }
 }
 
@@ -137,6 +123,8 @@ USE_I18N = True
 
 USE_TZ = True
 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 
@@ -146,11 +134,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_ROOT_NAME)
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SHELL_PLUS_PRINT_SQL = True
-
-# https://docs.celeryproject.org/en/stable/userguide/configuration.html
-CELERY_BROKER_URL = env("CELERY_BROKER_URL")
-CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND")
-CELERY_TIMEZONE = "UTC"
 
 LOGGING = {
     "version": 1,

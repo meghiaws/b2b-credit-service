@@ -6,14 +6,12 @@ services:
     command: scripts/web_entrypoint.sh
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
     restart: "always"
     env_file:
       - .env
     environment:
-      - ENVIRONMENT=dev
-      - DJANGO_SETTINGS_MODULE=config.settings.dev
+      - ENVIRONMENT=prod
+      - DJANGO_SETTINGS_MODULE=config.settings.prod
     depends_on:
       - db
 
@@ -23,8 +21,6 @@ services:
       - .env
     volumes:
         - postgres-data:/var/lib/postgresql/data/
-    ports:
-      - "5432:5432"
 
 volumes:
   postgres-data:
