@@ -7,7 +7,11 @@ from app.credits.models import Organization
 
 class AuthenticationService:
     @staticmethod
-    def sign_up(*, email: str, password: str, organization_name: str) -> None:
+    def sign_up(
+        *, email: str, password: str, phone: str, organization_name: str
+    ) -> None:
         with transaction.atomic():
             user = BaseUser.objects.create_user(email=email, password=password)
-            return Organization.objects.create(user=user, name=organization_name)
+            return Organization.objects.create(
+                user=user, name=organization_name, phone=phone
+            )

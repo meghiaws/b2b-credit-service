@@ -18,6 +18,7 @@ class Organization(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="organization"
     )
     name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=11, unique=True)
     balance = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal(0.0))
 
     class Meta:
@@ -45,10 +46,14 @@ class IncreaseBalanceTransaction(models.Model):
 
 class TransferTransaction(TimeStamp):
     sender = models.ForeignKey(
-        Organization, on_delete=models.DO_NOTHING, related_name="sent_transactions"
+        Organization,
+        on_delete=models.DO_NOTHING,
+        related_name="sent_credits_transactions",
     )
     receiver = models.ForeignKey(
-        Organization, on_delete=models.DO_NOTHING, related_name="received_transactions"
+        Organization,
+        on_delete=models.DO_NOTHING,
+        related_name="received_credits_transactions",
     )
     amount = models.DecimalField(max_digits=12, decimal_places=2)
 

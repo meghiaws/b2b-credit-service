@@ -1,3 +1,4 @@
+from datetime import timedelta
 import os
 from pathlib import Path
 
@@ -72,7 +73,12 @@ TEMPLATES = [
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
 }
+
+SIMPLE_JWT = {"ACCESS_TOKEN_LIFETIME": timedelta(days=1)}
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "B2B Credits Service API",

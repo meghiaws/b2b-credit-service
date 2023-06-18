@@ -9,6 +9,7 @@ class OrganizationAdmin(admin.ModelAdmin):
         "id",
         "name",
         "user",
+        "phone",
         "balance",
     )
 
@@ -29,3 +30,12 @@ class TransactionAdmin(admin.ModelAdmin):
         "receiver",
         "amount",
     )
+
+# @admin.register(Organization)
+# class OrganizationAdmin(admin.ModelAdmin):
+#     list_display = (
+#         "id",
+#         "user_id",
+#         "name",
+#         "balance",
+#     )
