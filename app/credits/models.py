@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.db import models
-from django.db.models import Q
+from django.db.models import Q, F
 from django.utils import timezone
 from django.conf import settings
 
@@ -27,6 +27,14 @@ class Organization(models.Model):
                 name="constraint_balance_not_negative", check=Q(balance__gte=0)
             )
         ]
+
+    def withdraw(self, amount):
+        self.balance = F("balance") - amount
+        self.save(update_fields=["balance"])
+
+    def deposit(self, amount):
+        self.balance = F("balance") + amount
+        self.save(update_fields=["balance"])
 
     def __str__(self) -> str:
         return str(self.id)

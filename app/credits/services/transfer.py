@@ -30,10 +30,8 @@ class TransferService:
                 amount=amount,
             )
 
-            # deposit the actual balance from the sender organization
-            sender_organization.balance = F("balance") - amount
-            sender_organization.save(update_fields=["balance"])
+            # withdraw the actual balance from the sender organization
+            sender_organization.withdraw(amount=amount)
 
-            # update the actual balance of the organization
-            receiver_organization.balance = F("balance") + amount
-            receiver_organization.save(update_fields=["balance"])
+            # deposit the actual balance of the organization
+            receiver_organization.deposit(amount=amount)
