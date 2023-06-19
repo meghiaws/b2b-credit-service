@@ -22,6 +22,7 @@ class Organization(models.Model):
     balance = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal(0.0))
 
     class Meta:
+        ordering = ("id",)
         constraints = [
             models.CheckConstraint(
                 name="constraint_balance_not_negative", check=Q(balance__gte=0)
@@ -41,12 +42,17 @@ class Organization(models.Model):
 
 
 class IncreaseBalanceTransaction(models.Model):
-    receiver = models.ForeignKey(
+    receiver = models.OneToOneField(
         Organization,
         on_delete=models.DO_NOTHING,
         related_name="increased_balance_transactions",
     )
     amount = models.DecimalField(max_digits=12, decimal_places=2)
+
+    class Meta:
+        ordering = ("id",)
+        verbose_name = "Increase Balance Transaction"
+        verbose_name_plural = "Increase Balance Transactions"
 
     def __str__(self) -> str:
         return str(self.id)
@@ -64,6 +70,11 @@ class TransferTransaction(TimeStamp):
         related_name="received_credits_transactions",
     )
     amount = models.DecimalField(max_digits=12, decimal_places=2)
+
+    class Meta:
+        ordering = ("id",)
+        verbose_name = "Transfer Transaction"
+        verbose_name_plural = "Transfer Transactions"
 
     def __str__(self) -> str:
         return str(self.id)

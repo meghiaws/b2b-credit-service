@@ -4,6 +4,7 @@ from django.db.models import QuerySet, F
 from django.contrib.auth import get_user_model
 
 from app.credits.models import IncreaseBalanceTransaction, Organization
+from app.credits.exceptions import OneTimeIncreasedBalanceException
 
 User = get_user_model()
 
@@ -26,14 +27,23 @@ class OrganizationService:
         Organization.objects.filter(id=organization_id).delete()
 
     @staticmethod
-    def organization_increase_balance(
-        *, user: User,balance: Decimal
-    ) -> None:
+    def organization_increase_balance(*, user: User, balance: Decimal) -> None:
         organization_id = (
             Organization.objects.filter(user_id=user.id)
             .values_list("id", flat=True)
             .get()
         )
+
+        already_increased_balance = IncreaseBalanceTransaction.objects.filter(
+            receiver_id=organization_id
+        ).exists()
+
+        # check whether the organization has ever charged its account or not
+        if already_increased_balance:
+            raise OneTimeIncreasedBalanceException(
+                {"message": "you have used your one-time chance to charge your account"}
+            )
+
         with transaction.atomic():
             # create increase balance record for keep track of increased balances
             IncreaseBalanceTransaction.objects.create(
@@ -44,4 +54,3 @@ class OrganizationService:
             Organization.objects.filter(id=organization_id).update(
                 balance=F("balance") + balance
             )
-            
