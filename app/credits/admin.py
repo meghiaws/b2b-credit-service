@@ -13,6 +13,7 @@ class OrganizationAdmin(admin.ModelAdmin):
         "balance",
     )
 
+
 @admin.register(IncreaseBalanceTransaction)
 class IncreaseBalanceTransactionAdmin(admin.ModelAdmin):
     list_display = (
@@ -20,6 +21,7 @@ class IncreaseBalanceTransactionAdmin(admin.ModelAdmin):
         "receiver",
         "amount",
     )
+    list_filter = ("receiver_id",)
 
 
 @admin.register(TransferTransaction)
@@ -30,12 +32,4 @@ class TransactionAdmin(admin.ModelAdmin):
         "receiver",
         "amount",
     )
-
-# @admin.register(Organization)
-# class OrganizationAdmin(admin.ModelAdmin):
-#     list_display = (
-#         "id",
-#         "user_id",
-#         "name",
-#         "balance",
-#     )
+    list_filter = ("sender_id", "receiver_id")
