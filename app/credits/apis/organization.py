@@ -6,6 +6,7 @@ from app.api.mixins import OrganizerAuthMixin
 
 from app.credits.services.organization import OrganizationService
 from app.credits.serializers.organization import (
+    OrganizationDetailInputSerializer,
     OrganizationIncreaseBalanceInputSerializer,
     OrganizationOutputSerializer,
     OrganizationDetailOutputSerializer,
@@ -23,15 +24,26 @@ class OrganizationApi(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-# [GET, DELETE] api/organizations/{organization_id}/
+# [GET, PUT, DELETE] api/organizations/{organization_id}/
 class OrganizationDetailApi(APIView):
+    @extend_schema(responses=OrganizationDetailInputSerializer)
+    def put(self, request, organization_id):
+        serializer = OrganizationDetailInputSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        OrganizationService.organization_update(
+            organization_id=organization_id, **serializer.validated_data
+        )
+
+        return Response(status=status.HTTP_200_OK)
+
     @extend_schema(responses=OrganizationDetailOutputSerializer)
     def get(self, request, organization_id):
-        defect_type = OrganizationService.organization_get(
+        organization = OrganizationService.organization_get(
             organization_id=organization_id
         )
 
-        serializer = OrganizationDetailOutputSerializer(defect_type)
+        serializer = OrganizationDetailOutputSerializer(organization)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
 
