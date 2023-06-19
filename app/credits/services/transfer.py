@@ -2,9 +2,8 @@ from decimal import Decimal
 from django.db import transaction
 from django.contrib.auth import get_user_model
 
-from rest_framework import exceptions
-
 from app.credits.models import Organization, TransferTransaction
+from app.credits.exceptions import NotEnoughCreditsException
 
 
 User = get_user_model()
@@ -26,7 +25,7 @@ class TransferService:
 
             # check if sender organization has enough money to transfer
             if sender_organization.balance < amount:
-                raise exceptions.ValidationError(
+                raise NotEnoughCreditsException(
                     {"message": "the sender balance is lower than amount"}
                 )
 
