@@ -4,8 +4,6 @@ python manage.py migrate
 
 python manage.py collectstatic --noinput
 
-echo $ENVIRONMENT
-
 if [[ $ENVIRONMENT == "dev" ]]
 then
     echo "--> Starting development server."
