@@ -142,7 +142,7 @@ LOGGING = {
         "console": {"class": "logging.StreamHandler", "formatter": "verbose"},
     },
     "loggers": {
-        "api": {
+        "app": {
             "handlers": ["console"],
             "level": os.environ.get("DJANGO_LOG_LEVEL", "DEBUG"),
         },
