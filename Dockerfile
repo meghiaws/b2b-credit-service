@@ -1,7 +1,7 @@
 ###########
 # BUILDER #
 ###########
-FROM python:3.10-slim-bullseye as builder
+FROM python:3.11-slim-bullseye as builder
 
 WORKDIR /app
     
@@ -16,7 +16,7 @@ RUN pip install --upgrade pip && \
 ###############
 # FINAL STAGE #
 ###############
-FROM python:3.10-slim-bullseye as final
+FROM python:3.11-slim-bullseye as final
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 
