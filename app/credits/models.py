@@ -1,4 +1,5 @@
 from decimal import Decimal
+
 from django.db import models
 from django.db.models import Q, F
 from django.utils import timezone
@@ -13,6 +14,22 @@ class TimeStamp(models.Model):
         abstract = True
 
 
+class Customer(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="customer"
+    )
+    phone = models.CharField(max_length=11, unique=True)
+    credit = models.DecimalField(max_digits=12, decimal_places=2)
+
+    class Meta:
+        ordering = ("id",)
+        constraints = [
+            models.CheckConstraint(
+                name="customer_credit_not_negative", check=Q(credit__gte=0)
+            )
+        ]
+
+
 class Organization(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="organization"
@@ -25,7 +42,7 @@ class Organization(models.Model):
         ordering = ("id",)
         constraints = [
             models.CheckConstraint(
-                name="constraint_balance_not_negative", check=Q(balance__gte=0)
+                name="organization_balance_not_negative", check=Q(balance__gte=0)
             )
         ]
 
