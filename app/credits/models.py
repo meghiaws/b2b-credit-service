@@ -19,7 +19,7 @@ class Customer(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="customer"
     )
     phone = models.CharField(max_length=11, unique=True)
-    credit = models.DecimalField(max_digits=12, decimal_places=2)
+    credit = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal(0.0))
 
     class Meta:
         ordering = ("id",)

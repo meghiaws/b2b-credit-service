@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import IncreaseBalanceTransaction, Organization, TransferTransaction
+from .models import Customer, IncreaseBalanceTransaction, Organization, TransferTransaction
 
 
 @admin.register(Organization)
@@ -11,6 +11,15 @@ class OrganizationAdmin(admin.ModelAdmin):
         "user",
         "phone",
         "balance",
+    )
+
+
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "user",
+        "phone",
     )
 
 

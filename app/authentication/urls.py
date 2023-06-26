@@ -5,11 +5,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from app.authentication.apis import SignupApi
+from app.authentication.apis import CustomerSignupApi, OrganizationSignupApi
 
 
 urlpatterns = [
-    path("signup/", SignupApi.as_view(), name="signup"),
+    path("organizations/signup/", OrganizationSignupApi.as_view(), name="organizations-signup"),
+    path("customers/signup/", CustomerSignupApi.as_view(), name="customers-signup"),
     path("login/", TokenObtainPairView.as_view(), name="login"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token-refresh"),
 ]
