@@ -59,7 +59,7 @@ class Organization(models.Model):
 
 
 class IncreaseBalanceTransaction(models.Model):
-    receiver = models.OneToOneField(
+    receiver = models.ForeignKey(
         Organization,
         on_delete=models.DO_NOTHING,
         related_name="increased_balance_transactions",

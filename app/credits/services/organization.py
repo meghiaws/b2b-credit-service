@@ -38,18 +38,6 @@ class OrganizationService:
             .get()
         )
 
-        # check whether the organization has ever charged its account or not
-        already_increased_balance = IncreaseBalanceTransaction.objects.filter(
-            receiver_id=organization_id
-        ).exists()
-        if already_increased_balance:
-            logger.exception(
-                f"The organization {organization_id} has already used its one time chance to charge its account"
-            )
-            raise OneTimeIncreasedBalanceException(
-                {"message": "you have used your one-time chance to charge your account"}
-            )
-
         logger.info("Starting increase balance process.")
         with transaction.atomic():
             # create increase balance record for keep track of increased balances
