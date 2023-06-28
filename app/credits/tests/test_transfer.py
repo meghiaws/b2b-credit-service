@@ -12,20 +12,6 @@ User = get_user_model()
 
 
 @pytest.fixture
-def organization_with_zero_balance():
-    user = User.objects.create_user(email="email1@domain.com", password="12345")
-    return Organization.objects.create(user=user, name="organization_test_1")
-
-
-@pytest.fixture
-def organization_with_positive_balance():
-    user = User.objects.create_user(email="email2@domain.com", password="12345")
-    return Organization.objects.create(
-        user=user, name="organization_test_2", balance=200
-    )
-
-
-@pytest.fixture
 def customer():
     user = User.objects.create_user(email="email@domain.com", password="12345")
     return Customer.objects.create(user=user, phone="09140000000")
@@ -118,7 +104,6 @@ class TestTransfer:
             response = api_client.post("/api/transfer/", transfer_data)
             assert response.status_code == 200
 
-
         total_balance = Organization.objects.all().aggregate(
             total_balance=Sum("balance")
         )["total_balance"]
@@ -133,4 +118,3 @@ class TestTransfer:
 
         assert transferred_amount == received_amount == 20000
         assert total_balance == 580000
-

@@ -2,17 +2,10 @@ import pytest
 
 from django.contrib.auth import get_user_model
 
-from app.credits.models import Organization
 from app.credits.tests.factories import OrganizationFactory
 
 
 User = get_user_model()
-
-
-@pytest.fixture
-def organization():
-    user = User.objects.create_user(email="email@domain.com", password="12345")
-    return Organization.objects.create(user=user, name="organization_test1")
 
 
 @pytest.mark.django_db(reset_sequences=True)
