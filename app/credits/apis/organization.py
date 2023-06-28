@@ -2,18 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from drf_spectacular.utils import extend_schema
-from app.api.mixins import OrganizerAuthMixin
+from app.credits.models import Organization
 
 from app.credits.services.organization import OrganizationService
 from app.credits.serializers.organization import (
     OrganizationDetailInputSerializer,
-    OrganizationIncreaseBalanceInputSerializer,
     OrganizationOutputSerializer,
     OrganizationDetailOutputSerializer,
 )
 
 
-# [POST, GET] api/organizations/
+# [GET] api/organizations/
 class OrganizationApi(APIView):
     @extend_schema(responses=OrganizationOutputSerializer)
     def get(self, request):
@@ -39,9 +38,15 @@ class OrganizationDetailApi(APIView):
 
     @extend_schema(responses=OrganizationDetailOutputSerializer)
     def get(self, request, organization_id):
-        organization = OrganizationService.organization_get(
-            organization_id=organization_id
-        )
+        try:
+            organization = OrganizationService.organization_get(
+                organization_id=organization_id
+            )
+        except Organization.DoesNotExist:
+            return Response(
+                {"message": "organization with provided id does not exists."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
 
         serializer = OrganizationDetailOutputSerializer(organization)
 
@@ -54,17 +59,3 @@ class OrganizationDetailApi(APIView):
             return Response(f"Error {ex}", status=status.HTTP_400_BAD_REQUEST)
 
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-# [POST] api/organizations/{organization_id}/increase-balance/
-class OrganizationIncreaseBalanceApi(OrganizerAuthMixin, APIView):
-    @extend_schema(responses=OrganizationIncreaseBalanceInputSerializer)
-    def post(self, request):
-        serializer = OrganizationIncreaseBalanceInputSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        OrganizationService.organization_increase_balance(
-            user=request.user, **serializer.validated_data
-        )
-
-        return Response(status=status.HTTP_200_OK)

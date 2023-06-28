@@ -20,7 +20,3 @@ class OrganizationDetailOutputSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organization
         fields = ("id", "name", "user_id", "balance")
-
-# used in increase income api (api/organizations/increase-balance/)
-class OrganizationIncreaseBalanceInputSerializer(serializers.Serializer):
-    balance = serializers.DecimalField(max_digits=12, decimal_places=2, min_value=Decimal(0.01))

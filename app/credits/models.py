@@ -29,13 +29,19 @@ class Customer(models.Model):
             )
         ]
 
+    def deposit(self, amount):
+        self.credit = F("credit") + amount
+        self.save(update_fields=["credit"])
+
+    def __str__(self) -> str:
+        return str(self.id)
+
 
 class Organization(models.Model):
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="organization"
     )
     name = models.CharField(max_length=255)
-    phone = models.CharField(max_length=11, unique=True)
     balance = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal(0.0))
 
     class Meta:
@@ -48,10 +54,6 @@ class Organization(models.Model):
 
     def withdraw(self, amount):
         self.balance = F("balance") - amount
-        self.save(update_fields=["balance"])
-
-    def deposit(self, amount):
-        self.balance = F("balance") + amount
         self.save(update_fields=["balance"])
 
     def __str__(self) -> str:
@@ -76,13 +78,13 @@ class IncreaseBalanceTransaction(models.Model):
 
 
 class TransferTransaction(TimeStamp):
-    sender = models.ForeignKey(
+    organization = models.ForeignKey(
         Organization,
         on_delete=models.DO_NOTHING,
         related_name="sent_credits_transactions",
     )
-    receiver = models.ForeignKey(
-        Organization,
+    customer = models.ForeignKey(
+        Customer,
         on_delete=models.DO_NOTHING,
         related_name="received_credits_transactions",
     )

@@ -9,7 +9,6 @@ class OrganizationAdmin(admin.ModelAdmin):
         "id",
         "name",
         "user",
-        "phone",
         "balance",
     )
 
@@ -19,6 +18,7 @@ class CustomerAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "user",
+        "credit",
         "phone",
     )
 
@@ -37,8 +37,8 @@ class IncreaseBalanceTransactionAdmin(admin.ModelAdmin):
 class TransactionAdmin(admin.ModelAdmin):
     list_display = (
         "id",
-        "sender",
-        "receiver",
+        "organization",
+        "customer",
         "amount",
     )
-    list_filter = ("sender_id", "receiver_id")
+    list_filter = ("organization_id", "customer_id")

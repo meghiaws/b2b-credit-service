@@ -8,15 +8,13 @@ from app.credits.serializers.transfer import TransferInputSerializer
 from app.credits.services.transfer import TransferService
 
 
-# [POST] api/organizations/{organization_id}/increase-balance/
-class TransferApi(ApiAuthMixin, APIView):
+# [POST] api/organizations/increase-balance/
+class TransferApi(APIView):
     @extend_schema(responses=TransferInputSerializer)
     def post(self, request):
         serializer = TransferInputSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        TransferService.transfer_credit_by_phone_number(
-            sender=request.user, **serializer.validated_data
-        )
+        TransferService.transfer_credit_by_phone_number(**serializer.validated_data)
 
         return Response(status=status.HTTP_200_OK)

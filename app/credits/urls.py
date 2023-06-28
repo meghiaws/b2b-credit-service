@@ -1,9 +1,9 @@
 from django.urls import include, path
+from app.credits.apis.increase_balance import IncreaseBalanceApi
 
 from app.credits.apis.organization import (
     OrganizationApi,
     OrganizationDetailApi,
-    OrganizationIncreaseBalanceApi,
 )
 from app.credits.apis.transfer import TransferApi
 
@@ -15,11 +15,14 @@ organization_patterns = [
         OrganizationDetailApi.as_view(),
         name="organization-detail",
     ),
+]
+
+increase_balance_patterns = [
     path(
-        "increase-balance/",
-        OrganizationIncreaseBalanceApi.as_view(),
-        name="organization-increase-balance",
-    ),
+        "",
+        IncreaseBalanceApi.as_view(),
+        name="increase-balance",
+    )
 ]
 
 transfer_patterns = [
@@ -28,5 +31,8 @@ transfer_patterns = [
 
 urlpatterns = [
     path("organizations/", include((organization_patterns, "organizations"))),
+    path(
+        "increase-balance/", include((increase_balance_patterns, "increase-balances"))
+    ),
     path("transfer/", include((transfer_patterns, "transfers"))),
 ]

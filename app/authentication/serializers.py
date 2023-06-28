@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
-from app.credits.models import Organization
+from app.credits.models import Customer, Organization
 
 
 class OrganizationSignupInputSerializer(serializers.Serializer):
@@ -21,7 +21,7 @@ class CustomerSignupInputSerializer(serializers.Serializer):
     password = serializers.CharField()
     password2 = serializers.CharField()
     phone = serializers.CharField(
-        max_length=11, validators=[UniqueValidator(queryset=Organization.objects.all())]
+        max_length=11, validators=[UniqueValidator(queryset=Customer.objects.all())]
     )
 
     def validate(self, attrs):
