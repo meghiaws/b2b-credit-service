@@ -11,5 +11,5 @@ then
 elif [[ $ENVIRONMENT == "prod" ]]
 then
     echo "--> Starting gunicorn server"
-    gunicorn config.wsgi:application -b 0.0.0.0:8000
+    gunicorn config.wsgi:application -w 25 -b 0.0.0.0:8000
 fi
