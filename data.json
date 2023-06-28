@@ -1,0 +1,396 @@
+[
+    {
+        "model": "core.baseuser",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$BO5x2KdPUGvvTdpROXIglF$00oMQ/AJ4sjhvsvbNbjmkRHU+Sjcf/VSvQo7LIy333k=",
+            "last_login": "2023-06-28T01:05:07.000Z",
+            "is_superuser": true,
+            "email": "admin@domain.com",
+            "is_active": true,
+            "is_admin": true,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 2,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$g5yYFCBuoOm43tv1kP68iw$fFBA/LvNcz9wZ/t+/7KefZYwdeeuhX8p/gxmWK6OcHA=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer1@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 3,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$DfvtppPUKipX1VaXfy6TzG$rubsMbzqDHyMX5oym9AntTdIW//AGHFXaZd9PfBUND0=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer2@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 4,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$45YTI7T5W2J2IS3bfvYOnF$3tKJWlo9GEEuva+GdpDbIsXQfxQjCC5q58aktUmIxxI=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer3@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 5,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$j4ZcSu4qhK1jda3MlI0scD$uV8ebTJWmkkjrWAiNRJ7yz6PpTjR7xQiAZpqHoN6Bjo=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer4@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 6,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$zWX33ZLcLhxImiMZXunRjx$SSP2ooL1kho2CaJ/pUNsy1PmQreMncWlvTHQ6/gaYqc=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer5@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 7,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$wO65HZPGFKROzSQTzQ0hzj$eJ7grvBRLFNmq0UFdZKO5Qn7p/9K1+pCvq+6YyoZwc8=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer6@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 8,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$Ai06I5xCafDp0jlqCvBeZj$U9FlbbsVC4nf8ppYdXCQN/OKI2wEsDokfqbTi/VUTpE=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer7@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 9,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$qPC0AmoEXyWitRPvqDqlhZ$+RQlv1D72bn/LOQC9OYGmqFuoaUyiks9tOLqKJ+kASM=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer8@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 10,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$wrC3eFblWIUQgREksEvgHC$Fk4IuFbYMVVGpPHUvbfAdsmLYVRuIaBvecqPeteAbB0=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer9@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 11,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$7aqBLoNgR68i0OrtvVmloM$9R9RrLwdiOcEx1EfPJwG+/056eVDVYw0cM8UPGa3VGY=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer10@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 12,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$WHgoTVcmo9JLO7rXY6Gn8T$jUWU+8d8jEX/5HC5Tazjor4idmSeOxvmvEScCcbPciQ=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer11@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 13,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$YjxWsF6zgvENXFa0Me4Ame$q7n3ToNtoeI1loDDU9cj4wnLwXegB3NnA/t5wgEB/ew=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer12@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 14,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$qgtzspdPXIhVN6GIIYOTpL$3ugaIlVwGLbtuuF0YIh9WiGJZKClR2cRa2yH+Im9gj0=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer13@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 15,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$rS4tokMv8Kwq9AaOQ176MJ$XO+6P9ZuT/O2uR959e60lqHRZ2VyG2LxRwWiOzGAxTI=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer14@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 16,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$dSkguOwvK8pVMyBp8pcAl6$V41XHeMxsRGUThdwd9Qzzalpo5wpDHpO4FirlkCJSqM=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "customer15@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 17,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$1nrSZqwFYzHD3dAXBjGIvK$ZAm6fzCUa2oUnHtgxP/9ZOp/gaaXG/So9cUQVQDKGbw=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "org1@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 18,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$5gegNXlVLnh0SduiYIJBg2$zz0YygCrVFFWZ/4fpNvUJBxZRKo7GGBXqaByUIs+jts=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "org2@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 19,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$gfFXeoMiH07Y5lSSpInv45$s1ytFDYf8TH/RhIdDjCYq2MhdxTkGdS+kyzI8c5kqls=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "org3@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 20,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$mxcp4AvyWXmx7dU4tmF4f6$lNRwOJYL9sOT3qj3Sf7seta5yVAUS2y0GJNZqcILJLQ=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "org4@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "core.baseuser",
+        "pk": 21,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$ur3Ie0CpjP6a94ahpyXf8v$rb+NUL42FmVfmlpFp/viKKhdeEZvdYlxQ43VgCf1Xjk=",
+            "last_login": null,
+            "is_superuser": false,
+            "email": "org5@domain.com",
+            "is_active": true,
+            "is_admin": false,
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 1,
+        "fields": { "user": 2, "phone": "0914000001", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 2,
+        "fields": { "user": 3, "phone": "0914000002", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 3,
+        "fields": { "user": 4, "phone": "0914000003", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 4,
+        "fields": { "user": 5, "phone": "0914000004", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 5,
+        "fields": { "user": 6, "phone": "0914000005", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 6,
+        "fields": { "user": 7, "phone": "0914000006", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 7,
+        "fields": { "user": 8, "phone": "0914000007", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 8,
+        "fields": { "user": 9, "phone": "0914000008", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 9,
+        "fields": { "user": 10, "phone": "0914000009", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 10,
+        "fields": { "user": 11, "phone": "0914000010", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 11,
+        "fields": { "user": 12, "phone": "0914000011", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 12,
+        "fields": { "user": 13, "phone": "0914000012", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 13,
+        "fields": { "user": 14, "phone": "0914000013", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 14,
+        "fields": { "user": 15, "phone": "0914000014", "credit": "0.00" }
+    },
+    {
+        "model": "credits.customer",
+        "pk": 15,
+        "fields": { "user": 16, "phone": "0914000015", "credit": "0.00" }
+    },
+    {
+        "model": "credits.organization",
+        "pk": 1,
+        "fields": { "user": 17, "name": "organization1", "balance": "0.00" }
+    },
+    {
+        "model": "credits.organization",
+        "pk": 2,
+        "fields": { "user": 18, "name": "organization2", "balance": "0.00" }
+    },
+    {
+        "model": "credits.organization",
+        "pk": 3,
+        "fields": { "user": 19, "name": "organization3", "balance": "0.00" }
+    },
+    {
+        "model": "credits.organization",
+        "pk": 4,
+        "fields": { "user": 20, "name": "organization4", "balance": "0.00" }
+    },
+    {
+        "model": "credits.organization",
+        "pk": 5,
+        "fields": { "user": 21, "name": "organization5", "balance": "0.00" }
+    }
+]
