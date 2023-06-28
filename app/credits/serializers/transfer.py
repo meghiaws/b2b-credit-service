@@ -10,7 +10,7 @@ class TransferInputSerializer(serializers.Serializer):
     )
 
     def validate_amount(self, value: Decimal):
-        if float(value) < 0.01:
+        if value < Decimal("0.01"):
             raise serializers.ValidationError(
                 {"message": "amount must be greater than or equal to 0.01"}
             )
